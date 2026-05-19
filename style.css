@@ -531,6 +531,15 @@ body.nav-open .nav-icon-close {
 
   .nav-toggle {
     display: inline-flex;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+  }
+
+  .nav-toggle i {
+    font-size: 1.15rem;
   }
 
   .topbar-links {
@@ -607,6 +616,60 @@ body.nav-open .nav-icon-close {
   margin-bottom: 20px;
 }
 
+.about-section {
+  padding: 12px 0 8px;
+}
+
+.about-section .section-heading {
+  text-align: center;
+}
+
+.about-card {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(26, 39, 68, 0.12);
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: none;
+}
+
+.about-copy {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 62ch;
+  text-align: center;
+}
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini-stats div {
+  padding: 16px;
+  border: 1px solid rgba(26, 39, 68, 0.08);
+  border-radius: 10px;
+  background: var(--accent-light);
+}
+
+.mini-stats strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.mini-stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .projects-section .section-heading {
   text-align: center;
 }
@@ -618,20 +681,25 @@ body.nav-open .nav-icon-close {
 }
 
 .view-all-link {
-  color: var(--accent);
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
   font-size: 0.95rem;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 4px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: color 200ms ease, border-color 200ms ease;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  box-shadow: 0 8px 18px rgba(29, 91, 127, 0.14);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
 .view-all-link:hover {
-  color: var(--accent-dark);
-  border-bottom-color: var(--accent-dark);
+  color: #ffffff;
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .view-all-link i {
@@ -1356,6 +1424,10 @@ body.nav-open .nav-icon-close {
     grid-template-columns: 1fr;
   }
 
+  .project-card.ekitab-card {
+    grid-template-columns: 1fr;
+  }
+
   .yatra-viewer,
   .yatra-viewer img {
     min-height: 260px;
@@ -1422,9 +1494,9 @@ body.nav-open .nav-icon-close {
 
   .skills-section,
   .contact-section {
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
   .skill-logos {
@@ -1548,6 +1620,18 @@ body.nav-open .nav-icon-close {
 
   .social-footer {
     flex-wrap: wrap;
+  }
+
+  .about-card {
+    padding: 18px 16px;
+  }
+
+  .about-copy {
+    font-size: 0.96rem;
+  }
+
+  .mini-stats {
+    grid-template-columns: 1fr;
   }
 }
 
