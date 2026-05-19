@@ -158,9 +158,43 @@ a {
   border-bottom: 1px solid rgba(26, 39, 68, 0.08);
 }
 
+body.nav-open {
+  overflow: hidden;
+}
+
 .brand,
 .topbar-links a {
   min-height: 44px;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.nav-toggle i {
+  pointer-events: none;
+}
+
+.nav-icon-close {
+  display: none;
+}
+
+body.nav-open .nav-icon-bars {
+  display: none;
+}
+
+body.nav-open .nav-icon-close {
+  display: inline-block;
 }
 
 .brand,
@@ -485,13 +519,64 @@ a {
 
 @media (max-width: 700px) {
   .page-shell { padding: 0 16px 28px; }
-  .topbar { padding: 14px 0 12px; }
+  .topbar {
+    padding: 14px 0 12px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
   .brand { font-size: 1rem; }
   .topbar-links {
     font-size: 0.9rem;
     gap: 10px;
     width: 100%;
     flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .topbar-links {
+    position: fixed;
+    top: 68px;
+    left: 16px;
+    right: 16px;
+    z-index: 998;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid rgba(26, 39, 68, 0.1);
+    border-radius: 16px;
+    background: rgba(248, 249, 251, 0.98);
+    box-shadow: 0 20px 40px rgba(26, 39, 68, 0.16);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  body.nav-open .topbar-links {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .topbar-links a {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: transparent;
+    padding-bottom: 12px;
+  }
+
+  .topbar-links a::after {
+    display: none;
+  }
+
+  .topbar-links a.active {
+    background: var(--accent-light);
+    color: var(--accent);
   }
 }
 
@@ -563,9 +648,9 @@ a {
   color: #ffffff;
   border: 1px solid rgba(29, 91, 127, 0.16);
   border-radius: 0;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 /* Contrast adjustments when skills section uses accent background */
@@ -614,6 +699,9 @@ a {
   color: #ffffff;
   border: 1px solid rgba(29, 91, 127, 0.16); /* subtle border around section */
   border-radius: 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 .contact-section .section-heading .eyebrow {
   color: rgba(255,255,255,0.9);
@@ -952,16 +1040,14 @@ a {
   align-items: center;
 }
 
-.project-card.yatra-card .project-visual {
-  display: block;
-}
-
-/* show ekitab visual and match layout to yatra */
 .project-card.ekitab-card {
-  /* make visual column match Yatra's wider column so boxes appear same size */
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 28px;
   align-items: center;
+}
+
+.project-card.yatra-card .project-visual {
+  display: block;
 }
 
 .project-card.ekitab-card .project-visual {
@@ -1306,8 +1392,9 @@ a {
   }
 
   .topbar {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 10px;
   }
 
@@ -1441,9 +1528,9 @@ a {
   border: none;
   background: #1d5b7f;
   color: #ffffff;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 .contact-grid {
   display: grid;

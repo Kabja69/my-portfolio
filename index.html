@@ -13,7 +13,11 @@
 			<section class="home-panel" id="home">
 				<nav class="topbar">
 					<a href="index.html" class="brand"><span class="avatar" aria-hidden="true"><img src="images/logo.png" alt="Krishal logo"></span><span class="brand-text">Krishal</span></a>
-					<div class="topbar-links">
+					<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="topbarLinks" aria-label="Open navigation menu">
+						<i class="fas fa-bars nav-icon-bars" aria-hidden="true"></i>
+						<i class="fas fa-times nav-icon-close" aria-hidden="true"></i>
+					</button>
+					<div class="topbar-links" id="topbarLinks">
 						<a href="#home" class="active">Home</a>
 						<a href="projects.html">Projects</a>
 					</div>
@@ -163,6 +167,11 @@
 					</article>
 
 					<article class="project-card ekitab-card">
+						<div class="project-visual ekitab-visual">
+							<div class="ekitab-viewer" data-ekitab-viewer>
+								<img src="images/ekitab_1.jpg" alt="eKitab screenshot 1">
+							</div>
+						</div>
 						<div class="project-info">
 							<p class="project-kicker">Mobile application</p>
 							<h3>eKitab</h3>
@@ -172,18 +181,11 @@
 								<span>Firebase</span>
 								<span>APIs</span>
 							</div>
-							<div class="project-highlights">
-								<ul>
-									<li>Audio reading</li>
-									<li>AI recommendations</li>
-									<li>Smooth UI</li>
-								</ul>
-							</div>
-						</div>
-						<div class="project-visual ekitab-visual">
-							<div class="ekitab-viewer" data-ekitab-viewer>
-								<img src="images/ekitab_1.jpg" alt="eKitab screenshot 1">
-							</div>
+							<ul class="project-highlights">
+								<li>Audio reading</li>
+								<li>AI recommendations</li>
+								<li>Smooth UI</li>
+							</ul>
 						</div>
 					</article>
 
@@ -298,6 +300,25 @@
 	  }
 	})();
 		const yatraViewer = document.querySelector('[data-yatra-viewer]');
+		const navToggle = document.querySelector('.nav-toggle');
+		const topbarLinks = document.querySelector('.topbar-links');
+		const closeNav = () => {
+			document.body.classList.remove('nav-open');
+			if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+		};
+		if (navToggle && topbarLinks) {
+			navToggle.addEventListener('click', () => {
+				const isOpen = document.body.classList.toggle('nav-open');
+				navToggle.setAttribute('aria-expanded', String(isOpen));
+			});
+			topbarLinks.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', closeNav);
+			});
+			window.addEventListener('resize', () => {
+				if (window.innerWidth > 700) closeNav();
+			});
+		}
+
 		if (yatraViewer) {
 			const frames = [
 				'images/yatra_1.jpg',
