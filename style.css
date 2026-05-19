@@ -152,7 +152,7 @@ a {
   width: 100%;
   z-index: 999;
   margin: 0;
-  padding: 12px 48px 12px;
+  padding: 10px 32px 10px;
   background: rgba(248, 249, 251, 0.72);
   backdrop-filter: blur(6px);
   transition: background 200ms ease, padding 120ms ease;
@@ -165,7 +165,7 @@ body.nav-open {
 
 .brand,
 .topbar-links a {
-  min-height: 44px;
+  min-height: 38px;
 }
 
 .nav-toggle {
@@ -213,7 +213,7 @@ body.nav-open .nav-icon-close {
 }
 
 .brand {
-  font-size: 1.12rem;
+  font-size: 1.02rem;
   font-weight: 700;
   letter-spacing: 0;
   color: var(--accent);
@@ -263,8 +263,8 @@ body.nav-open .nav-icon-close {
 /* avatar in header */
 .brand { display: inline-flex; align-items: center; gap: 10px; }
 .avatar {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -530,25 +530,33 @@ body.nav-open .nav-icon-close {
   .page-shell { padding: 0 16px 28px; }
   .topbar {
     position: sticky;
-    padding: 14px 16px 12px;
+    padding: 10px 12px 8px;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     top: 0;
   }
-  .brand { font-size: 1rem; }
+  .brand {
+    font-size: 0.96rem;
+    min-height: auto;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
 
   .nav-toggle {
     display: inline-flex;
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border: 0;
     background: transparent;
     color: var(--accent);
   }
 
   .nav-toggle i {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .topbar-links {
@@ -1461,7 +1469,7 @@ body.nav-open .nav-icon-close {
   .topbar,
   .topbar-compact {
     margin: 0;
-    padding: 16px 0 12px;
+    padding: 10px 12px 8px;
   }
 
   .home-panel,
