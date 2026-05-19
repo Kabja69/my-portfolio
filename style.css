@@ -520,38 +520,37 @@ body.nav-open .nav-icon-close {
 @media (max-width: 700px) {
   .page-shell { padding: 0 16px 28px; }
   .topbar {
-    padding: 14px 0 12px;
+    position: sticky;
+    padding: 14px 16px 12px;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    top: 0;
   }
   .brand { font-size: 1rem; }
-  .topbar-links {
-    font-size: 0.9rem;
-    gap: 10px;
-    width: 100%;
-    flex-wrap: wrap;
-  }
 
   .nav-toggle {
     display: inline-flex;
   }
 
   .topbar-links {
-    position: fixed;
-    top: 68px;
-    left: 16px;
+    position: absolute;
+    top: calc(100% - 1px);
     right: 16px;
+    left: auto;
     z-index: 998;
     flex-direction: column;
     gap: 6px;
-    padding: 12px;
+    padding: 8px;
+    width: min(220px, calc(100vw - 32px));
     border: 1px solid rgba(26, 39, 68, 0.1);
-    border-radius: 16px;
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
     background: rgba(248, 249, 251, 0.98);
     box-shadow: 0 20px 40px rgba(26, 39, 68, 0.16);
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
+    transform-origin: top right;
     pointer-events: none;
     transition: opacity 180ms ease, transform 180ms ease;
   }
@@ -1035,21 +1034,20 @@ body.nav-open .nav-icon-close {
 }
 
 .project-card.yatra-card {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   align-items: center;
 }
 
 .project-card.ekitab-card {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   align-items: center;
 }
 
-.project-card.yatra-card .project-visual {
-  display: block;
-}
-
+.project-card.yatra-card .project-visual,
 .project-card.ekitab-card .project-visual {
   display: block;
 }
@@ -1422,6 +1420,13 @@ body.nav-open .nav-icon-close {
     gap: 18px;
   }
 
+  .skills-section,
+  .contact-section {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
   .skill-logos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -1489,23 +1494,48 @@ body.nav-open .nav-icon-close {
   }
 
   .contact-section {
-    padding: 34px 16px 20px;
+    padding: 28px 16px 16px;
+  }
+
+  .contact-grid {
+    gap: 14px;
+    margin: 0 auto 18px;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+    justify-self: stretch;
+    align-items: stretch;
   }
 
   .contact-form,
   .contact-right .contact-details {
-    padding: 16px 0;
+    padding: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-form {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .contact-right .contact-details {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .contact-item {
     gap: 10px;
+    align-items: flex-start;
   }
 
   .contact-icon {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    min-height: 42px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
   }
 
   .contact-value {
