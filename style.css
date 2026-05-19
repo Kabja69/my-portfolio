@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -187,6 +188,14 @@ body.nav-open {
 
 .nav-icon-close {
   display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-icon-bars {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-icon-close {
+  display: inline-block;
 }
 
 body.nav-open .nav-icon-bars {
@@ -1470,7 +1479,7 @@ body.nav-open .nav-icon-close {
 
   .topbar-links {
     gap: 12px;
-    width: 100%;
+    width: min(220px, calc(100vw - 32px));
   }
 
   .hero h1 {
