@@ -30,6 +30,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -39,7 +47,7 @@ a {
 
 .page-shell {
   min-height: 100vh;
-  padding: 60px 64px 48px;
+  padding: clamp(24px, 4vw, 60px) clamp(16px, 5vw, 64px) 48px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -148,6 +156,11 @@ a {
   backdrop-filter: blur(6px);
   transition: background 200ms ease, padding 120ms ease;
   border-bottom: 1px solid rgba(26, 39, 68, 0.08);
+}
+
+.brand,
+.topbar-links a {
+  min-height: 44px;
 }
 
 .brand,
@@ -471,10 +484,15 @@ a {
 }
 
 @media (max-width: 700px) {
-  .page-shell { padding: 64px 20px 32px; }
-  .topbar { padding: 10px 16px 8px; }
+  .page-shell { padding: 0 16px 28px; }
+  .topbar { padding: 14px 0 12px; }
   .brand { font-size: 1rem; }
-  .topbar-links { font-size: 0.9rem; gap: 12px; }
+  .topbar-links {
+    font-size: 0.9rem;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 .note-top {
@@ -540,14 +558,14 @@ a {
   display: grid;
   gap: 0;
   margin: 20px 0;
-  padding: 32px 64px;
+  padding: clamp(24px, 4vw, 32px) clamp(16px, 5vw, 64px);
   background: #1d5b7f; /* match contact section explicitly */
   color: #ffffff;
   border: 1px solid rgba(29, 91, 127, 0.16);
   border-radius: 0;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Contrast adjustments when skills section uses accent background */
@@ -885,10 +903,10 @@ a {
 @media (max-width: 600px) {
   .skills-section {
     margin: 40px 0;
-    width: 100vw;
+    width: 100%;
     left: auto;
     right: auto;
-    padding: 28px 28px;
+    padding: 28px 16px;
   }
 
   .skill-logos {
@@ -1232,6 +1250,10 @@ a {
     font-size: clamp(2.6rem, 10vw, 4.6rem);
   }
 
+  .hero-copy {
+    max-width: 100%;
+  }
+
   .lead {
     max-width: 100%;
   }
@@ -1254,16 +1276,21 @@ a {
   .yatra-viewer img {
     min-height: 260px;
   }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 700px) {
   .page-shell {
-    padding: 0 20px;
+    padding: 0 16px 28px;
   }
 
   .hero {
     grid-template-columns: 1fr;
     gap: 24px;
+    margin: 28px 0 40px;
   }
 
   .topbar,
@@ -1281,15 +1308,18 @@ a {
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
   }
 
   .topbar-links {
     gap: 12px;
+    width: 100%;
   }
 
   .hero h1 {
     max-width: 100%;
     font-size: clamp(2.4rem, 13vw, 3.4rem);
+    word-break: break-word;
   }
 
   .hero-visual {
@@ -1297,19 +1327,102 @@ a {
   }
 
   .section-heading {
-    margin-top: 30px;
+    margin-top: 28px;
+  }
+
+  .skills-showcase,
+  .contact-grid {
+    gap: 18px;
+  }
+
+  .skill-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .skill-logo {
+    padding: 16px 12px;
+  }
+
+  .skill-logo i,
+  .skill-logo svg,
+  .skill-logo img {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 2.25rem;
+  }
+
+  .skill-name {
+    font-size: 0.76rem;
+  }
+
+  .project-card {
+    padding: 16px;
   }
 
   .project-info {
-    padding: 18px;
+    padding: 16px;
   }
 
   .project-info h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .project-highlights li,
+  .project-info p {
+    font-size: 0.95rem;
   }
 
   .project-visual {
     min-height: 160px;
+    height: auto;
+  }
+
+  .yatra-viewer,
+  .ekitab-viewer {
+    height: 220px;
+    border-radius: 12px;
+  }
+
+  .yatra-viewer,
+  .ekitab-viewer,
+  .yatra-viewer img,
+  .ekitab-viewer img {
+    min-height: 220px;
+  }
+
+  .tech-tags {
+    gap: 8px;
+    margin: 14px 0 18px;
+  }
+
+  .tech-tags span {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .contact-section {
+    padding: 34px 16px 20px;
+  }
+
+  .contact-form,
+  .contact-right .contact-details {
+    padding: 16px 0;
+  }
+
+  .contact-item {
+    gap: 10px;
+  }
+
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
   }
 
   .mini-stats {
@@ -1324,13 +1437,13 @@ a {
 /* Contact section */
 .contact-section {
   margin-top: 20px;
-  padding: 40px max(24px, calc((100vw - 980px) / 2)) 24px;
+  padding: 40px clamp(16px, 5vw, 24px) 24px;
   border: none;
   background: #1d5b7f;
   color: #ffffff;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 .contact-grid {
   display: grid;
